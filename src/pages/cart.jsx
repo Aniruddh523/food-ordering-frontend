@@ -14,14 +14,14 @@ import { useEffect, useState } from "react";
     const [loading, setLoading] = useState(true); 
     useEffect(() => { fetchCart(); }, []);
      const fetchCart = async () => {
-       try
-        { 
-          const res = await API.get("/api/cart/getCart"); 
+       try{ 
+       const res = await API.get("/api/cart/getCart"); 
      setCartItems(res.data.carts);
      } catch (err) { 
       
-      console.log(err); 
-      toast.error("Failed to Load Cart");
+      // console.log(err); 
+      toast.error("Failed Load Cart Login please");
+      Navigate('/login')
     
 
      }

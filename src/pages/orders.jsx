@@ -2,7 +2,10 @@ import { useEffect, useState } from "react";
 import API from "../services/api";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
+
 const Orders = () => {
+   const Navigate = useNavigate();
   const [orders, setOrders] = useState([]);
   const [loading, setLoading] = useState(true);
 
@@ -11,16 +14,22 @@ const Orders = () => {
   }, []);
 
   const fetchOrders = async () => {
+    
     try {
       const res = await API.get("/api/order/getMyOrders");
 
       setOrders(res.data.orders);
     } catch (err) {
-      console.log(err);
-      toast.error("Failed to fetch orders");
-    } finally {
+      // console.log(err);
+      toast.error("orders can't see Please Login");
+       Navigate('/login')
+      
+
+    }finally{
       setLoading(false);
+    
     }
+    
   };
 
   if (loading) {
