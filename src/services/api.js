@@ -1,6 +1,6 @@
 import axios from "axios"
 const API = axios.create({
-     baseURL:"https://food-ordering-backend-0z7t.onrender.com",
+     baseURL:import.meta.env.VITE_API_URL,
 })
 
 API.interceptors.request.use((config)=>{
